@@ -8,7 +8,7 @@ import psycopg2
 import requests
 
 # NOTE: If you have changed the backend port (refer to Discourse), you will need to change this
-BASE_URL = "http://backend:5000"
+BASE_URL = "http://backend:5001"
 DB_CONFIG = {
     "host": "db",
     "database": "marksdb",
