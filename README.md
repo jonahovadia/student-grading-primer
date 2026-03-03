@@ -211,10 +211,10 @@ docker compose up --build
 ```
 
 - Frontend: http://localhost:8080  
-- Backend: http://localhost:5000  
-- Health: http://localhost:5000/  
-- Students: http://localhost:5000/students  
-- Stats: http://localhost:5000/stats  
+- Backend: http://localhost:5001  
+- Health: http://localhost:5001/  
+- Students: http://localhost:5001/students  
+- Stats: http://localhost:5001/stats  
 
 ---
 

@@ -15,12 +15,12 @@ def fail(msg):
     sys.exit(1)
 
 # Health
-r = requests.get("http://backend:5000/")
+r = requests.get("http://backend:5001/")
 if r.status_code != 200:
     fail("Backend health check failed")
 
 # Students list
-r = requests.get("http://backend:5000/students")
+r = requests.get("http://backend:5001/students")
 print("Status", r.status_code)
 if r.status_code != 200:
     fail("GET /students failed")
@@ -41,7 +41,7 @@ cur.close()
 conn.close()
 
 # Stats endpoint exists and returns required keys
-r = requests.get("http://backend:5000/stats")
+r = requests.get("http://backend:5001/stats")
 if r.status_code != 200:
     fail("GET /stats failed (implement the /stats endpoint)")
 try:
@@ -54,12 +54,12 @@ for key in ("count", "average", "min", "max"):
 
 # Create student and verify it persists
 create = requests.post(
-    "http://backend:5000/students",
+    "http://backend:5001/students",
     json={"name": "Sanity Student", "course": "COMP1531", "mark": 50},
 )
 if create.status_code != 200:
     fail("POST /students failed (check create_student and db.insert_student)")
-r2 = requests.get("http://backend:5000/students")
+r2 = requests.get("http://backend:5001/students")
 names = [s.get("name") for s in r2.json()]
 if "Sanity Student" not in names:
     fail("New student did not persist (ensure you are using the db.py methods or double check your docker volume)")
